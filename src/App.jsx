@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import Search from "./components/Search";
 
 function App() {
   const [todo, setTodo] = useState(() => {
@@ -11,6 +12,7 @@ function App() {
   const [input, setInput] = useState("");
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
+  const [searchId, setSearchId] = useState("");
   const addTodo = () => {
     if (input.length === 0) {
       alert("لطفا یک کار وارد کنید!");
@@ -20,6 +22,7 @@ function App() {
     setTodo(add);
     setInput("");
   };
+
   const removeTodo = (index) => {
     const remove = [...todo];
     remove.splice(index, 1);
@@ -65,6 +68,7 @@ function App() {
       <div className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen flex items-center justify-center p-4 font-sans">
         <div className="w-full max-w-md bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-200/60 p-6 border border-white/40 transition-all duration-300 hover:shadow-blue-300/40">
           <Header todo={todo} />
+          <Search searchId={searchId} setSearchId={setSearchId} />
 
           {/* فرم افزودن تسک جدید */}
           <TodoForm input={input} setInput={setInput} addTodo={addTodo} />
@@ -79,6 +83,7 @@ function App() {
             startEdit={startEdit}
             removeTodo={removeTodo}
             editText={editText}
+            searchId={searchId}
           />
           <div className=" mt-2 flex items-center justify-center">
             <button
