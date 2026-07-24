@@ -1,4 +1,4 @@
-function TodoForm({ input, setInput, addTodo }) {
+function TodoForm({ input, setInput, addTodo, priority, setPriority }) {
   return (
     <>
       <div className="flex items-center gap-2 bg-slate-100/70 p-1.5 rounded-2xl border border-slate-200/80 shadow-inner mb-5">
@@ -9,6 +9,15 @@ function TodoForm({ input, setInput, addTodo }) {
           placeholder="افزودن کار جدید ..."
           className="flex-1 bg-transparent px-4 py-2.5 text-slate-700 placeholder:text-slate-400 outline-none rounded-xl text-sm"
         />
+        <select
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+          className="bg-green-600 hover:bg-green-700 text-white px-1 py-2.5 rounded-xl transition-all duration-200 flex  shadow-md shadow-green-300/40 text-sm font-medium"
+        >
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
         <button
           onClick={() => addTodo()}
           className="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 shadow-md shadow-green-300/40 text-sm font-medium"
@@ -21,3 +30,4 @@ function TodoForm({ input, setInput, addTodo }) {
   );
 }
 export default TodoForm;
+// bg-white border border-slate-900 rounded-xl px-5 text-slate-800

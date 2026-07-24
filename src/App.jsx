@@ -13,14 +13,19 @@ function App() {
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
   const [searchId, setSearchId] = useState("");
+  const [priority, setPriority] = useState("High");
   const addTodo = () => {
     if (input.length === 0) {
       alert("لطفا یک کار وارد کنید!");
       return;
     }
-    const add = [...todo, { id: Date.now(), title: input, completed: false }];
+    const add = [
+      ...todo,
+      { id: Date.now(), title: input, completed: false, priority: priority },
+    ];
     setTodo(add);
     setInput("");
+    setPriority("High");
   };
 
   const removeTodo = (index) => {
@@ -71,7 +76,13 @@ function App() {
           <Search searchId={searchId} setSearchId={setSearchId} />
 
           {/* فرم افزودن تسک جدید */}
-          <TodoForm input={input} setInput={setInput} addTodo={addTodo} />
+          <TodoForm
+            input={input}
+            setInput={setInput}
+            addTodo={addTodo}
+            priority={priority}
+            setPriority={setPriority}
+          />
 
           {/* <!-- لیست تسک‌ها --> */}
           <TodoList

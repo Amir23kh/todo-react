@@ -20,6 +20,7 @@ function TodoItem({
             onClick={() => toggleTodo(index)}
             className={`w-6 h-6 rounded-full border-2 border-green-400 bg-green-50 ${t.completed ? "bg-green-300" : ""} flex items-center justify-center text-green-600 hover:bg-green-100 transition-colors`}
           ></button>
+
           {editId === t.id ? (
             <input
               className="border rounded px-2"
@@ -33,6 +34,11 @@ function TodoItem({
               {t.title}
             </span>
           )}
+          <span
+            className={`${t.priority === "High" ? "text-red-500 " : t.priority === "Medium" ? "text-yellow-500 " : t.priority === "Low" ? "text-green-500 " : ""} PX-2 py-1 rounded-full text-xs font-semibold `}
+          >
+            {t.priority}
+          </span>
         </div>
         <div className="flex items-center gap-3">
           {editId === t.id ? (
